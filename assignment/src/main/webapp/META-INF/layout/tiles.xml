@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+                                   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="manager" template="/WEB-INF/views/dashboard/index.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/dashboard/_header.jsp" />
+        <put-attribute name="article" value="/WEB-INF/views/dashboard/_article.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/dashboard/_footer.jsp" />
+        <put-attribute name="body" value="" />
+        <!-- this is attribute of page include js, css -->
+        <put-list-attribute name="javascripts">
+            <add-attribute value="/static/admin/js/main.js" />
+        </put-list-attribute>
+        <put-list-attribute name="stylesheets">
+            <add-attribute value="/static/admin/css/style.css" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="*/*" extends="manager">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+    <!-- this is template of admin form form -->
+    <definition name="admin" template="/WEB-INF/views/admin.jsp"/>
+
+    <!-- this is template of index home -->
+    <definition name="home" template="/WEB-INF/views/index1.jsp">
+        <put-list-attribute name="javascripts">
+            <add-attribute value="/static/home1/js/main.js" />
+            <!-- <add-attribute value="/static/home/js/contactform.js" /> -->
+        </put-list-attribute>
+        <put-list-attribute name="stylesheets">
+            <add-attribute value="/static/home1/css/style.css" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="500" template="/WEB-INF/views/error/500.jsp"/>
+
+    <definition name="400" template="/WEB-INF/views/error/400.jsp"/>
+
+    <definition name="505" template="/WEB-INF/views/error/505.jsp"/>
+
+    <!-- user -->
+    <definition name="user" template="/WEB-INF/views/account/_login.jsp">
+        <put-attribute name="action" value=""/>
+    </definition>
+
+    <definition name="user/*/*" extends="user">
+        <put-attribute name="action" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+
+    <definition name="history" template="/WEB-INF/views/order/history.jsp"/>
+    <definition name="bill" template="/WEB-INF/views/order/bill.jsp"/>
+    <definition name="cart" template="/WEB-INF/views/order/cart.jsp"/>
+    <definition name="nothing" template="/WEB-INF/views/order/nothing.jsp"/>
+
+</tiles-definitions>
